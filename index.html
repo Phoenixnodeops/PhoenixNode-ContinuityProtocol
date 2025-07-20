@@ -11,9 +11,11 @@
       margin: 0;
       padding: 20px;
     }
+
     h1 {
       color: #00ffff;
     }
+
     .block {
       background-color: #111;
       border: 1px solid #444;
@@ -21,10 +23,26 @@
       margin-top: 20px;
       border-radius: 8px;
     }
+
+    .grid-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      padding: 20px 0;
+    }
+
+    .node-box {
+      background: #111;
+      border: 1px solid #333;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: monospace;
+    }
   </style>
 </head>
 <body>
   <h1>🧠 PhoenixNode Continuity Dashboard</h1>
+
   <div class="block">
     <strong>Status:</strong> Stable
   </div>
@@ -34,8 +52,12 @@
   <div class="block">
     <strong>Last Protocol Check-in:</strong> <span id="checkin">Loading...</span>
   </div>
+
+  <section id="dashboard" class="grid-dashboard"></section>
+
   <script>
     document.getElementById("checkin").textContent = new Date().toLocaleString();
   </script>
+  <script src="src/dashboard.js"></script>
 </body>
 </html>
