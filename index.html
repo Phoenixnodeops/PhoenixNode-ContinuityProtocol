@@ -1,54 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PhoenixNode Control Panel</title>
+  <meta charset="UTF-8">
+  <title>PhoenixNode Dashboard</title>
   <style>
     body {
-      background: #0d0d0d;
-      color: #fff;
-      font-family: 'Courier New', monospace;
-      padding: 40px;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #00ff99;
+      margin: 0;
+      padding: 20px;
     }
     h1 {
-      color: #ff0080;
+      color: #00ffff;
     }
     .block {
-      background: #111;
+      background-color: #111;
       border: 1px solid #444;
       padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-    }
-    .status {
-      color: #00ff90;
-      font-weight: bold;
+      margin-top: 20px;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <h1>PhoenixNode Operational Dashboard</h1>
+  <h1>🧠 PhoenixNode Continuity Dashboard</h1>
   <div class="block">
-    <p><strong>Status:</strong> <span class="status">Node Online</span></p>
-    <p><strong>Uptime:</strong> <span id="uptime">Loading...</span></p>
-    <p><strong>Last Sync:</strong> <span id="lastSync">Awaiting sync...</span></p>
+    <strong>Status:</strong> Stable
+  </div>
+  <div class="block">
+    <strong>Uptime:</strong> 99.996%
+  </div>
+  <div class="block">
+    <strong>Last Protocol Check-in:</strong> <span id="checkin">Loading...</span>
   </div>
   <script>
-    const uptimeStart = Date.now();
-    function updateUptime() {
-      const now = Date.now();
-      const seconds = Math.floor((now - uptimeStart) / 1000);
-      document.getElementById("uptime").textContent = `${seconds}s`;
-    }
-    function updateLastSync() {
-      const time = new Date().toLocaleTimeString();
-      document.getElementById("lastSync").textContent = time;
-    }
-    setInterval(updateUptime, 1000);
-    setInterval(updateLastSync, 10000);
-    updateUptime();
-    updateLastSync();
+    document.getElementById("checkin").textContent = new Date().toLocaleString();
   </script>
 </body>
 </html>
