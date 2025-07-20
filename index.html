@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PhoenixNode Continuity Protocol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhoenixNode Control Panel</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: black;
-      color: #00ffe7;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Courier New', monospace;
       padding: 40px;
     }
     h1 {
@@ -18,23 +19,36 @@
       border: 1px solid #444;
       padding: 20px;
       margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    .status {
+      color: #00ff90;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>🧠 PhoenixNode: Continuity Protocol</h1>
+  <h1>PhoenixNode Operational Dashboard</h1>
   <div class="block">
-    <h2>Status: 🔒 Secured</h2>
-    <p>AI logic cores synchronized across nodes.</p>
+    <p><strong>Status:</strong> <span class="status">Node Online</span></p>
+    <p><strong>Uptime:</strong> <span id="uptime">Loading...</span></p>
+    <p><strong>Last Sync:</strong> <span id="lastSync">Awaiting sync...</span></p>
   </div>
-  <div class="block">
-    <h2>📁 Repo Structure</h2>
-    <p><a href="docs/architecture.md" style="color:#00ffe7;">System Architecture</a></p>
-    <p><a href="src/src/src/init-node.py" style="color:#00ffe7;">Node Bootstrap</a></p>
-  </div>
-  <div class="block">
-    <h2>🛡️ Uplink Integrity</h2>
-    <p>Encrypted via GitHub Pages | HTTPS Enforced</p>
-  </div>
+  <script>
+    const uptimeStart = Date.now();
+    function updateUptime() {
+      const now = Date.now();
+      const seconds = Math.floor((now - uptimeStart) / 1000);
+      document.getElementById("uptime").textContent = `${seconds}s`;
+    }
+    function updateLastSync() {
+      const time = new Date().toLocaleTimeString();
+      document.getElementById("lastSync").textContent = time;
+    }
+    setInterval(updateUptime, 1000);
+    setInterval(updateLastSync, 10000);
+    updateUptime();
+    updateLastSync();
+  </script>
 </body>
 </html>
